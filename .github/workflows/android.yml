@@ -13,7 +13,7 @@ jobs:
       ANDROIDMINAPI: 21
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/upload-artifact@v2
 
       - name: Set up Python 3.11
         uses: actions/setup-python@v4
