@@ -1,0 +1,84 @@
+#:import dp kivymd.metrics.dp
+
+<PontoScreen>:
+    name: "ponto"
+
+    MDBoxLayout:
+        orientation: "vertical"
+        padding: dp(16)
+        spacing: dp(12)
+
+        MDLabel:
+            text: "Ponto Eletrônico"
+            halign: "center"
+            font_style: "H4"
+
+        MDTextField:
+            id: name_field
+            hint_text: "Nome do colaborador"
+            required: True
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            spacing: dp(8)
+            MDTextField:
+                id: hours_field
+                hint_text: "Jornada (6 ou 8)"
+                required: True
+                helper_text_mode: "on_error"
+                helper_text: "Informe 6 ou 8"
+            MDBoxLayout:
+                orientation: "horizontal"
+                spacing: dp(4)
+                MDCheckbox:
+                    id: shifts_checkbox
+                MDLabel:
+                    text: "Dois turnos"
+                    valign: "center"
+
+        MDTextField:
+            id: break_field
+            hint_text: "Intervalo (min)"
+            disabled: True
+            required: True
+            helper_text_mode: "on_error"
+            helper_text: "30, 60 ou 180"
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            spacing: dp(8)
+            MDCheckbox:
+                id: ot_checkbox
+            MDLabel:
+                text: "Permite hora-extra"
+                valign: "center"
+
+        MDTextField:
+            id: ot_limit_field
+            hint_text: "Limite hora-extra (h)"
+            disabled: True
+            required: True
+            helper_text_mode: "on_error"
+            helper_text: "Ex: 1.5"
+
+        MDRaisedButton:
+            text: "Registrar Entrada"
+            pos_hint: {"center_x": .5}
+            on_release: app.show_time_picker("entry")
+
+        MDRaisedButton:
+            text: "Registrar Saída"
+            pos_hint: {"center_x": .5}
+            on_release: app.show_time_picker("exit")
+
+        MDRaisedButton:
+            text: "Calcular"
+            pos_hint: {"center_x": .5}
+            on_release: app.calculate()
+
+        MDLabel:
+            id: result_label
+            text: ""
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: app.theme_cls.primary_color

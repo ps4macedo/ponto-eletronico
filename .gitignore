@@ -1,0 +1,9 @@
+﻿.venv/
+.buildozer/
+*.apk
+*.aab
+.idea/
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.log
